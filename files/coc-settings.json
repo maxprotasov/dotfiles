@@ -1,25 +1,64 @@
 {
   "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/nvim/lombok.jar",
-  "suggest.enablePreview": true,
   "suggest.enablePreselect": false,
+    "solargraph.diagnostics": true,
+  "solargraph.completion": true,
+  "solargraph.formatting": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "ruby", "typescriptreact", "javascriptreact", "typescript"],
+  "prettier.eslintIntegration": true,
   "languageserver": {
-    "terraform": {
-      "command": "terraform-ls",
-      "args": ["serve"],
-      "filetypes": ["terraform", "tf"],
-      "initializationOptions": {},
-      "settings": {}
-    },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  },
+  "diagnostic-languageserver.linters": {
+    "clj_kondo_lint": {
+      "command": "clj-kondo",
+      "debounce": 100,
+      "args": [ "--lint", "%filepath"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "clj-kondo",
+      "formatLines": 1,
+      "formatPattern": [
+        "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "message": 4,
+          "security": 3
+        }
+      ],
+      "securities": {
+        "error": "error",
+        "warning": "warning",
+        "note": "info"
+      }
     }
   },
   "coc.preferences.extensionUpdateCheck": "weekly",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "# ",
-  "solargraph.diagnostics": true,
   "diagnostic-languageserver.mergeConfig": true,
   "diagnostic-languageserver.filetypes": {
     "php": ["phpcs", "phpstan"],
@@ -27,12 +66,10 @@
     "eelixir": ["mix_credo"]
   },
   "cSpellExt.enableDictionaries": ["russian"],
-  "cSpell.enabledLanguageIds": ["markdown", "plaintext", "yml", "php", "node", "python", "html", "css"],
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext", "yml", "node", "python", "html", "css"],
   "cSpell.language": "en,ru",
   "prettier.printWidth": 120,
   "prettier.trailingComma": "all",
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "prettier.singleQuote": true,
   "markdownlint.config": {
     "line_length": false,

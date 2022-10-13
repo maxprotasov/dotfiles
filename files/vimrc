@@ -11,7 +11,9 @@ endif
 :packadd! matchit
 
 call plug#begin('~/.vim/plugged')
-
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 "" MUST BE
 " Plug 'tpope/vim-sensible'
 " git support
@@ -59,10 +61,10 @@ Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-rails'
-" Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-" Plug 'tpope/vim-haml'
-" Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-haml'
+Plug 'slim-template/vim-slim'
 
 Plug 'pantharshit00/vim-prisma'
 
@@ -71,7 +73,7 @@ Plug 'pantharshit00/vim-prisma'
 " Plug 'hashivim/vim-terraform'
 " Plug 'chr4/nginx.vim'
 Plug 'janko-m/vim-test'
-" Plug 'jlanzarotta/bufexplorer'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'lepture/vim-jinja'
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'isobit/vim-caddyfile'
@@ -200,7 +202,7 @@ endif
 " set shortmess+=c
 
 " set cursorline
-" set hidden
+set hidden
 " set nofoldenable
 " set wrap
 " set linebreak
@@ -273,6 +275,8 @@ nmap "Y "*Y
 nmap "p "*p
 nmap "P "*P
 
+command! -nargs=0 Pr :CocCommand prettier.forceFormatDocument
+
 " highlight last inserted text
 nnoremap gV `[v`]
 
@@ -308,6 +312,9 @@ let g:slime_target = "neovim"
 " inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 let g:vim_markdown_folding_disabled = 1
+let g:NERDTreeWinSize = 40
+let NERDTreeQuitOnOpen=1
+nmap ,m :NERDTreeToggle<CR>
 
 " format the entire file
 " nnoremap ff :normal! gg=G``<CR>
